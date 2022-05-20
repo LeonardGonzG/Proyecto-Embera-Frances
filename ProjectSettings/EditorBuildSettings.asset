@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Writing.unity
     guid: 6957072dd0327f74286dd102d99f822f
+  - enabled: 1
+    path: Assets/Scenes/School.unity
+    guid: b53733c139b259c4dbf3078b6e0a5a20
   m_configObjects: {}
