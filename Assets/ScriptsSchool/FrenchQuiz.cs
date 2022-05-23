@@ -10,14 +10,28 @@ public class FrenchQuiz : MonoBehaviour
 
     public Text[] OptionsText;
 
-    public Button[]  OptionsButton;
+    private string[,] Answers = {
+        {"Bonjour","Au revoir","A tout à l’heure"},
+        {"Truite", "Tigre" , "Oiseau"},
+        {"Courir",  "Se promener", "Regarder"},
+        {"Chanter", "Crier", "Parler"},
+        {"Magnifiquement", "Sûrement", "Expressément"},
+        {"Bonsoir", "Après-midi", "Surtout"},
+        {"Autrefois", "Avant", "Ancestral"},
+        {"Chemin",  "Territoire",  "Ville"},
+        {"S’il te plaît",  "Encore une fois" ,"Merci beaucoup"}
+    };
+   
+    private string[] Questions = { "Buenos días en Francés se dice ... ", 
+    "El pájaro en frances", "Andar en francés", "Cantar en francés", "Bonito en francés" , 
+    "Buenas tardes en francés", "Ancestral en francés", "Territorio en francés","Muchas gracias en francés" };
 
-    private string[] OptionsFirstQuestion = {"Bonjour","Au revoir","A tout à l’heure"};
 
-    private string[] Questions = { "Buenos días en Francés se dice ... "};
+    private int QuestionNumber = 0;
+
+    private const int MaxNumberQuestions = 9; 
 
 
-    private int QuestionNumber = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,16 +41,22 @@ public class FrenchQuiz : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(QuestionNumber == 1){
-            TmpText.text = Questions[0];
-            for (int i = 0; i < 3; i++)
+            TmpText.text = Questions[QuestionNumber];
+            
+            for (int i = 0; i < Answers.GetLength(1) ; i++)
             {
-                OptionsText[i].text = OptionsFirstQuestion[i];
+                OptionsText[i].text = Answers[QuestionNumber,i];
             }
-        }
+        
     }
 
     public int GetQuestionNumber(){
         return QuestionNumber;
+    }
+
+    public void SetQuestionNumber(int NewQuestionNumber){
+        if(NewQuestionNumber < MaxNumberQuestions){
+            QuestionNumber = NewQuestionNumber;
+        }
     }
 }

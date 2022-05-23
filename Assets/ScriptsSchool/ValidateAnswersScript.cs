@@ -10,12 +10,16 @@ public class ValidateAnswersScript : MonoBehaviour
 
     public GameObject FrenchQuizObject;
 
+    private FrenchQuiz Quiz;
+
     private int QuestionNumber;
 
     // Start is called before the first frame update
     void Start()
     {
         QuestionNumber = FrenchQuizObject.GetComponent<FrenchQuiz>().GetQuestionNumber();
+        Quiz = FrenchQuizObject.GetComponent<FrenchQuiz>();
+
     }
 
     // Update is called once per frame
@@ -34,5 +38,9 @@ public class ValidateAnswersScript : MonoBehaviour
              }
         }
        
+    }
+
+    public void NextQuestion(){
+        Quiz.SetQuestionNumber(Quiz.GetQuestionNumber() + 1);
     }
 }
