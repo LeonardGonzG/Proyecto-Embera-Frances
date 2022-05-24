@@ -45,8 +45,16 @@ public class PopUpMenu : MonoBehaviour
        
         if(this.name == "Tables"){
             ShowPopUpMenu();
+            Reset();
         }
         
+    }
+
+    private void Reset(){
+        Question.text = "¿Estás listo para ponerte a prueba?";
+        Question.alignment =  TextAlignmentOptions.Center;
+        TextBtn1.text = "Todavía no";
+        TextBtn2.text = "Estoy listo";
     }
 
     public void ShowPopUpMenu(){
@@ -55,9 +63,10 @@ public class PopUpMenu : MonoBehaviour
 
     public void Close(){
 
-        if(this.gameObject.GetComponentInChildren<Text>() != null && 
-        (TextBtn1.text == "Francés") || (TextBtn1.text == "Todavía no") || 
-        (TextBtn1.text == "Sí") || (TextBtn2.text == "No")){
+        if(this.gameObject.GetComponentInChildren<Text>() != null &&  
+        (TextBtn1.text == "Todavía no") || 
+        (TextBtn1.text == "Sí") || (TextBtn2.text == "No"))
+        {
             anim.SetBool("show",false);
         }
     }
@@ -81,10 +90,29 @@ public class PopUpMenu : MonoBehaviour
         TextBtn2.text = "No";
     }
 
+    public void ShowExitExam(){
+        ShowPopUpMenu();
+        Question.text = "¿Deseas salir?";
+        Question.alignment =  TextAlignmentOptions.Center;
+        TextBtn1.text = "Sí";
+        TextBtn2.text = "No";
+    }
+
     public void BackToMainMenu(){
         if(Question.text == "¿Deseas volver al menú principal?" && TextBtn1.text == "Sí"){
              SceneManager.LoadScene("interface");
         }
     }
 
+    public Text GetBtnText1(){
+        return TextBtn1;
+    }
+
+    public Text GetBtnText2(){
+        return TextBtn2;
+    }
+
+    public TMP_Text GetQuestion(){
+        return Question;
+    }
 }

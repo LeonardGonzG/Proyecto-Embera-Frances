@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class ValidateAnswersScript : MonoBehaviour
 {
 
-    private string[] CorrectAnswers = {"Bonjour"};
+    private string[] CorrectAnswers = {"Bonjour", "Oiseau","Se promener","Chanter","Magnifiquement",
+    "Bon Après-midi" , "Ancestral", "Territoire" ,"Merci beaucoup","très heureux"};
 
     public GameObject FrenchQuizObject;
 
@@ -14,11 +15,16 @@ public class ValidateAnswersScript : MonoBehaviour
 
     private int QuestionNumber;
 
+    private Text TextBtn;
+
+    private int NumbCorrects = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         QuestionNumber = FrenchQuizObject.GetComponent<FrenchQuiz>().GetQuestionNumber();
         Quiz = FrenchQuizObject.GetComponent<FrenchQuiz>();
+        TextBtn = this.gameObject.GetComponentInChildren<Text>();
 
     }
 
@@ -29,15 +35,15 @@ public class ValidateAnswersScript : MonoBehaviour
     }
 
     public void ValidateAnswer(){
-        if(QuestionNumber == 1){
-             if( this.gameObject.GetComponentInChildren<Text>().text == CorrectAnswers[0]){
-                 Debug.Log("Respuesta Correcta");
-             }
-             else{
-                 Debug.Log("Respuesta Incorrecta");
-             }
-        }
-       
+        QuestionNumber = Quiz.GetQuestionNumber();
+        if(CorrectAnswers[QuestionNumber] == TextBtn.text){
+            Debug.Log("Correcta");
+            NumbCorrects = NumbCorrects + 1;
+            Quiz.SetNumbCorrects(NumbCorrects);
+        } 
+        else{
+            Debug.Log("Incorrecta");
+        }      
     }
 
     public void NextQuestion(){
