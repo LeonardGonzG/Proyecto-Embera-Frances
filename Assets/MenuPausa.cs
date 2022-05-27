@@ -6,12 +6,11 @@ public class MenuPausa : MonoBehaviour
 {
    public GameObject PanelMenu;
     public string Escena;
-     void Update(){
+     public void Menu(){
 
-        if(Input.GetKeyDown(KeyCode.Escape)){
+        
             Time.timeScale = 0f;
             PanelMenu.SetActive(true);
-        }
        
 
     }
