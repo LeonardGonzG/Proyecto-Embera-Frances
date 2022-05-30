@@ -19,13 +19,17 @@ public class ValidateAnswersScript : MonoBehaviour
 
     private int NumbCorrects = 0;
 
+    private Image MyImage;
+
+    public Button[] Btns = {};
+
     // Start is called before the first frame update
     void Start()
     {
         QuestionNumber = FrenchQuizObject.GetComponent<FrenchQuiz>().GetQuestionNumber();
         Quiz = FrenchQuizObject.GetComponent<FrenchQuiz>();
         TextBtn = this.gameObject.GetComponentInChildren<Text>();
-
+        MyImage = this.gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -37,16 +41,36 @@ public class ValidateAnswersScript : MonoBehaviour
     public void ValidateAnswer(){
         QuestionNumber = Quiz.GetQuestionNumber();
         if(CorrectAnswers[QuestionNumber] == TextBtn.text){
-            Debug.Log("Correcta");
             NumbCorrects = NumbCorrects + 1;
             Quiz.SetNumbCorrects(NumbCorrects);
-        } 
-        else{
-            Debug.Log("Incorrecta");
-        }      
+        }
+        DisableButtons();
     }
 
     public void NextQuestion(){
         Quiz.SetQuestionNumber(Quiz.GetQuestionNumber() + 1);
+        ResetColorButtons();
+        
+    }
+
+    private void DisableButtons(){
+        foreach (Button Btn in Btns)
+        {
+            if(Btn.GetComponentInChildren<Text>().text == CorrectAnswers[QuestionNumber]){
+                Btn.GetComponent<Image>().color = Color.blue;
+            }
+            else{
+                Btn.GetComponent<Image>().color = Color.red;
+            }
+            Btn.interactable = false;
+        }
+    }
+
+    private void ResetColorButtons(){
+        foreach (Button Btn in Btns)
+        {
+            Btn.GetComponent<Image>().color = Color.white;
+            Btn.interactable = true;
+        }
     }
 }

@@ -36,7 +36,7 @@ public class ShowFrenchQuiz : MonoBehaviour
     }
 
     public void ShowBtns(){
-         foreach (GameObject Btn in Btns)
+        foreach (GameObject Btn in Btns)
         {
             Btn.SetActive(true);
         }
