@@ -17,7 +17,7 @@ public class ValidateAnswersScript : MonoBehaviour
 
     private Text TextBtn;
 
-    private int NumbCorrects = 0;
+    private static int NumbCorrects = 0;
 
     private Image MyImage;
 
@@ -40,9 +40,11 @@ public class ValidateAnswersScript : MonoBehaviour
 
     public void ValidateAnswer(){
         QuestionNumber = Quiz.GetQuestionNumber();
+       
         if(CorrectAnswers[QuestionNumber] == TextBtn.text){
-            NumbCorrects = NumbCorrects + 1;
+            NumbCorrects++;
             Quiz.SetNumbCorrects(NumbCorrects);
+            print(NumbCorrects);
         }
         DisableButtons();
     }

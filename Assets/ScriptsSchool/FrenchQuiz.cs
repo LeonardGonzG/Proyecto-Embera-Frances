@@ -38,6 +38,8 @@ public class FrenchQuiz : MonoBehaviour
 
     public GameObject[] Btns;
 
+    public TMP_Text currentResult;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +57,10 @@ public class FrenchQuiz : MonoBehaviour
                 {
                     OptionsText[i].text = Answers[QuestionNumber,i];
                 }
+
+                if(currentResult!=null){
+                    currentResult.text = ((float) NumbCorrects/ MaxNumberQuestions)*100 + "%";
+                }
             }
             else{
                 ShowResults();
@@ -65,8 +71,9 @@ public class FrenchQuiz : MonoBehaviour
     private void ShowResults(){
         
         float result = ((float) NumbCorrects/ MaxNumberQuestions)*100;
-        TmpText.text = "Resultado " + result  + "%";
+        TmpText.text = "Resultado Final " + result  + "%";
         HideBtns();
+        currentResult.text = "0%";
 
     }
 
