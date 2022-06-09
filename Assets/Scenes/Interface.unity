@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 270042007}
   - component: {fileID: 270042006}
   - component: {fileID: 270042005}
+  - component: {fileID: 270042009}
   m_Layer: 5
   m_Name: InfoButton
   m_TagString: Untagged
@@ -447,7 +448,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 270042007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 270042009}
+        m_TargetAssemblyTypeName: CambioEscena, Assembly-CSharp
+        m_MethodName: change
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &270042007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,6 +499,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270042003}
   m_CullTransparentMesh: 0
+--- !u!114 &270042009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270042003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32f3b80f530a5994687398013ecf6b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Escena: Info
 --- !u!1 &488393235 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 273305025722370636, guid: e4a801aecf923d14ea1fe6e7becfe290, type: 3}
