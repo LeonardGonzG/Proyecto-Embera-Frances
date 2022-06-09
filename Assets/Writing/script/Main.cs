@@ -6,13 +6,12 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainPanel : MonoBehaviour
+public class Main : MonoBehaviour
 {
     private int step = 1;
 
+    public int points = 0;
     private GameObject start;
-
-    public GameObject numLifes;
 
     private GameObject op;
 
@@ -28,6 +27,10 @@ public class MainPanel : MonoBehaviour
 
     private GameObject v6;
 
+    private GameObject v7;
+
+    private GameObject finish;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +42,10 @@ public class MainPanel : MonoBehaviour
         this.v4 = SetActive("Question4", false);
         this.v5 = SetActive("Question5", false);
         this.v6 = SetActive("Question6", false);
+        this.v7 = SetActive("Write", false);
+        this.finish = SetActive("Finish", false);
+        GameObject.Find("ConfigPanel").SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -66,7 +73,12 @@ public class MainPanel : MonoBehaviour
                 StartCoroutine(this.waiter(this.v5, this.v6));
                 break;
             case 6:
-                StartCoroutine(this.waiter(this.v6, null));
+                StartCoroutine(this.waiter(this.v6, this.v7));
+                StartCoroutine(this.waiter(this.op, null));
+                break;
+            case 7:
+                this.finish.GetComponent<Finish>().txt.text = $"Felicidades has terminado de todas las preguntas tu puntuacion final es de {this.points} / 12, ¿Que deseas hacer?";
+                StartCoroutine(this.waiter(this.v7, this.finish));
                 break;
             default:
                 break;
@@ -76,7 +88,7 @@ public class MainPanel : MonoBehaviour
 
     IEnumerator waiter(GameObject unactive, GameObject active)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         if (unactive != null)
         {
             unactive.SetActive(false);
@@ -102,5 +114,9 @@ public class MainPanel : MonoBehaviour
             elem.SetActive (status);
         }
         return elem;
+    }
+
+    public void incrementPoints(){
+        this.points += 1;
     }
 }

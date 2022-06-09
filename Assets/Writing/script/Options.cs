@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Options : MonoBehaviour
 {
-    public GameObject checkedV;
+    public GameObject success;
+    public GameObject fail;
 
     // Start is called before the first frame update
     void Start()
     {
-        this.checkedV.SetActive(false);
+        this.success.SetActive(false);
+        this.fail.SetActive(false);
     }
 
     // Update is called once per frame
@@ -17,15 +19,27 @@ public class Options : MonoBehaviour
     {
     }
 
-    public void Active()
+    public void ActiveSuccess()
     {
-        StartCoroutine(this.waiter());
+        StartCoroutine(this.waiterS());
     }
 
-    IEnumerator waiter()
+    public void ActiveFail()
     {
-        this.checkedV.SetActive(true);
-        yield return new WaitForSeconds(2);
-        this.checkedV.SetActive(false);
+        StartCoroutine(this.waiterF());
+    }
+
+    IEnumerator waiterF()
+    {
+        this.fail.SetActive(true);
+        yield return new WaitForSeconds(1);
+        this.fail.SetActive(false);
+    }
+
+    IEnumerator waiterS()
+    {
+        this.success.SetActive(true);
+        yield return new WaitForSeconds(1);
+        this.success.SetActive(false);
     }
 }
