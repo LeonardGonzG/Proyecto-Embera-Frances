@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ValidateAnswersScript : MonoBehaviour
+public class ValidateAnswersEmbera : MonoBehaviour
 {
 
-    private string[] CorrectAnswers = {"Bonjour", "Oiseau","Se promener","Chanter","Magnifiquement",
-    "Bon Après-midi" , "Ancestral", "Territoire" ,"Merci beaucoup","très heureux"};
+    private string[] CorrectAnswers = {"Sâka evarîsîdama", "îbana","tuakidi","karibu","mipita",
+    "Sâka duanuma kevara" , "chorârâdrua", "drua" ,"Arakiruma"};
 
-    public GameObject FrenchQuizObject;
+    public GameObject EmberaQuizObject;
 
-    private FrenchQuiz Quiz;
+    private EmberaQuiz Quiz;
 
     private int QuestionNumber;
 
@@ -26,14 +26,11 @@ public class ValidateAnswersScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(FrenchQuizObject.GetComponent<FrenchQuiz>() != null){
-            QuestionNumber = FrenchQuizObject.GetComponent<FrenchQuiz>().GetQuestionNumber();
-            Quiz = FrenchQuizObject.GetComponent<FrenchQuiz>();
-            TextBtn = this.gameObject.GetComponentInChildren<Text>();
-            MyImage = this.gameObject.GetComponent<Image>();
-            NumbCorrects = 0;
-        }
-        
+        QuestionNumber = EmberaQuizObject.GetComponent<EmberaQuiz>().GetQuestionNumber();
+        Quiz = EmberaQuizObject.GetComponent<EmberaQuiz>();
+        TextBtn = this.gameObject.GetComponentInChildren<Text>();
+        MyImage = this.gameObject.GetComponent<Image>();
+        NumbCorrects = 0;
     }
 
     // Update is called once per frame

@@ -19,6 +19,8 @@ public class PopUpMenu : MonoBehaviour
     private Text TextBtn1;
     private Text TextBtn2;    
 
+    public GameObject EmberaButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +98,18 @@ public class PopUpMenu : MonoBehaviour
         Question.alignment =  TextAlignmentOptions.Center;
         TextBtn1.text = "Sí";
         TextBtn2.text = "No";
+    }
+
+    public void ShowEmberaButton(){
+        if(EmberaButton!=null){
+            EmberaButton.SetActive(true);
+        }
+    }
+
+    public void HideEmberaButton(){
+        if(EmberaButton!=null){
+            EmberaButton.SetActive(false);
+        }
     }
 
     public void BackToMainMenu(){

@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShowFrenchQuiz : MonoBehaviour
+public class ShowEmberaQuiz : MonoBehaviour
 {
-    public GameObject FrenchQuizMenu;
+    public GameObject EmberaQuizMenu;
 
     public GameObject PopUpMenu;
 
@@ -27,9 +27,9 @@ public class ShowFrenchQuiz : MonoBehaviour
     }
 
     public void Show(){
-        if(this.gameObject.GetComponentInChildren<Text>().text == "Francés"){
+        if(this.gameObject.GetComponentInChildren<Text>().text == "Embera"){
             anim.SetBool("show",false);
-            FrenchQuizMenu.SetActive(true);
+            EmberaQuizMenu.SetActive(true);
             ShowBtns();
         }
        
@@ -43,11 +43,14 @@ public class ShowFrenchQuiz : MonoBehaviour
     }
 
     public void Close(){
-        if(Question.text == "¿Deseas salir?" && TextBtn1.text == "Sí"){
-            FrenchQuizMenu.GetComponentInChildren<FrenchQuiz>().SetQuestionNumber(0);
-            FrenchQuizMenu.GetComponentInChildren<FrenchQuiz>().SetFinished(false);
-            FrenchQuizMenu.GetComponentInChildren<FrenchQuiz>().SetNumbCorrects(0);
-            FrenchQuizMenu.SetActive(false);
+
+        if(PopUpMenu.GetComponentInChildren<PopUpMenu>().GetQuestion().text == "¿Deseas salir?" && 
+        PopUpMenu.GetComponentInChildren<PopUpMenu>().GetBtnText1().text == "Sí"){
+            
+            EmberaQuizMenu.GetComponentInChildren<EmberaQuiz>().SetQuestionNumber(0);
+            EmberaQuizMenu.GetComponentInChildren<EmberaQuiz>().SetFinished(false);
+            EmberaQuizMenu.GetComponentInChildren<EmberaQuiz>().SetNumbCorrects(0);
+            EmberaQuizMenu.SetActive(false);
         }
     }
 }
