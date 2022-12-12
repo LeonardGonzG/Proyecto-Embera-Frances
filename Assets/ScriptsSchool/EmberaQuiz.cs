@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,7 +58,8 @@ public class EmberaQuiz : MonoBehaviour
                 }
 
                 if(currentResult!=null){
-                    currentResult.text = ((float) NumbCorrects/ MaxNumberQuestions)*100 + "%";
+                    float embera_result = ((float) NumbCorrects/ MaxNumberQuestions)*100;
+                    currentResult.text = Math.Round(embera_result)  + "%";
                 }
             }
             else{
@@ -69,7 +71,7 @@ public class EmberaQuiz : MonoBehaviour
     private void ShowResults(){
         
         float result = ((float) NumbCorrects/ MaxNumberQuestions)*100;
-        TmpText.text = "Resultado Final " + result  + "%";
+        TmpText.text = "Resultado Final " + Math.Round(result)  + "%";
         HideBtns();
         currentResult.text = "0%";
 
