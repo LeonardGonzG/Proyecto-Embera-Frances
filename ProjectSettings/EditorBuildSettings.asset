@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Inicio.unity
     guid: c5837033f8b5de74597f43fc05092ec1
+  - enabled: 1
+    path: Assets/Scenes/School.unity
+    guid: b53733c139b259c4dbf3078b6e0a5a20
   m_configObjects: {}
