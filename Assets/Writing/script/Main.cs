@@ -44,7 +44,7 @@ public class Main : MonoBehaviour
         this.v6 = SetActive("Question6", false);
         this.v7 = SetActive("Write", false);
         this.finish = SetActive("Finish", false);
-        GameObject.Find("ConfigPanel").SetActive(false);
+         //GameObject.Find("ConfigPanel").SetActive(false);
 
     }
 
